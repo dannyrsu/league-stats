@@ -3,11 +3,12 @@ import { LeagueService } from '../league.service';
 import { SummonerProfile } from '../models/summoner-profile';
 
 @Component({
-  selector: 'app-summoner-search',
-  templateUrl: './summoner-search.component.html',
-  styleUrls: ['./summoner-search.component.css']
+  selector: 'app-summoner-profile',
+  templateUrl: './summoner-profile.component.html',
+  styleUrls: ['./summoner-profile.component.css']
 })
-export class SummonerSearchComponent implements OnInit {
+export class SummonerProfileComponent implements OnInit {
+
   summonerProfile: SummonerProfile;
   region = 'na1';
   regions: object[] = [
