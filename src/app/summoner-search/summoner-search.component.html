@@ -1,4 +1,7 @@
 <div>
-  <input type="text" [(ngModel)]="summonerName" placeholder="Summoner Name" />
-  <button type="button" (click)="onSearchClick()">Search</button>
+  <input #summonerName placeholder="Summoner Name" />
+  <select [(ngModel)]="region">
+    <option *ngFor="let r of regions" [ngValue]="r.id">{{r.name}}</option>
+  </select>
+  <button type="button" (click)="onSearchClick(summonerName.value)">Search</button>
 </div>
