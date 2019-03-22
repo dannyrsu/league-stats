@@ -1,5 +1,6 @@
 export class SummonerProfile {
   profileIconId: number;
+  profileIconUrl: string;
   name: string;
   puuid: string;
   summonerLevel: number;

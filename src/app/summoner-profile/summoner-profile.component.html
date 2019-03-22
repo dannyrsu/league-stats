@@ -5,3 +5,12 @@
   </select>
   <button type="button" (click)="onSearchClick(summonerName.value)">Search</button>
 </div>
+<div *ngIf="summonerProfile" class='profile'>
+  <img width="100" src="{{summonerProfile.profileIconUrl}}" />
+  <div>{{ summonerProfile.name }}</div>
+  <div>{{ summonerProfile.puuid }}</div>
+  <div>{{ summonerProfile.summonerLevel }}</div>
+  <div>{{ summonerProfile.revisionDate }}</div>
+  <div>{{ summonerProfile.id }}</div>
+  <div>{{ summonerProfile.accountId }}</div>
+</div>
