@@ -1,16 +1,22 @@
 <div>
-  <input #summonerName placeholder="Summoner Name" />
-  <select [(ngModel)]="region">
-    <option *ngFor="let r of regions" [ngValue]="r.id">{{r.name}}</option>
-  </select>
-  <button type="button" (click)="onSearchClick(summonerName.value)">Search</button>
+  <div class="form-inline mb-2 ">
+      <input #summonerName class="form-control mr-sm-2" placeholder="Summoner Name" />
+      <select class="form-control mr-sm-2" [(ngModel)]="region">
+        <option *ngFor="let r of regions" [ngValue]="r.id">{{r.name}}</option>
+      </select>
+      <button type="button" class="btn btn-primary" (click)="onSearchClick(summonerName.value)">Search</button>
+  </div>
+
+  <div *ngIf="summonerProfile" class='card'>
+    <div class="card-body">
+      <img width="100" src="{{summonerProfile.profileIconUrl}}" />
+      <h4 class="card-title">{{summonerProfile.name}}</h4>
+      <h6 class="card-subtitle mb-2 text-muted">{{summonerProfile.summonerLevel}}</h6>
+
+      <div>
+        Match history
+      </div>
+    </div>
+  </div>
 </div>
-<div *ngIf="summonerProfile" class='profile'>
-  <img width="100" src="{{summonerProfile.profileIconUrl}}" />
-  <div>{{ summonerProfile.name }}</div>
-  <div>{{ summonerProfile.puuid }}</div>
-  <div>{{ summonerProfile.summonerLevel }}</div>
-  <div>{{ summonerProfile.revisionDate }}</div>
-  <div>{{ summonerProfile.id }}</div>
-  <div>{{ summonerProfile.accountId }}</div>
-</div>
+
