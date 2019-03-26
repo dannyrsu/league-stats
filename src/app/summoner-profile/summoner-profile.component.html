@@ -9,7 +9,7 @@
 
   <div *ngIf="summonerProfile" class='card'>
     <div class="card-body">
-      <img width="100" src="{{summonerProfile.profileIconUrl}}" />
+      <img width="100" src="https://ddragon.leagueoflegends.com/cdn/9.6.1/img/profileicon/{{summonerProfile.profileIconId}}.png" />
       <div class="d-inline-block ml-2">
           <h4 class="card-title">{{summonerProfile.name}}</h4>
           <h6 class="card-subtitle mb-2 text-muted">Level {{summonerProfile.summonerLevel}}</h6>
