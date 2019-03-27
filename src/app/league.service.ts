@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { SummonerProfile } from './models/summoner-profile';
+import { Summoner } from './models/summoner';
 
 @Injectable({
   providedIn: 'root'
@@ -28,11 +28,11 @@ export class LeagueService {
     };
   }
 
-  getSummonerProfile(summonerName: string, region: string): Observable<any> {
-    return this.http.get<SummonerProfile>(`${this.leagueApiUrl}/v1/summoner/${summonerName}/stats?region=${region}`)
+  getSummonerStats(summonerName: string, region: string): Observable<any> {
+    return this.http.get<Summoner>(`${this.leagueApiUrl}/v1/summoner/${summonerName}/stats?region=${region}`)
       .pipe(
         tap(_ => console.log(`Call to League service to get ${summonerName} on ${region}`)),
-        catchError(this.handleError<SummonerProfile>('getSummonerProfile', null))
+        catchError(this.handleError<Summoner>('getSummonerStats', null))
       );
   }
 }

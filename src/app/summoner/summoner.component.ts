@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { LeagueService } from '../league.service';
-import { SummonerProfile } from '../models/summoner-profile';
+import { Summoner } from '../models/summoner';
 
 @Component({
-  selector: 'app-summoner-profile',
-  templateUrl: './summoner-profile.component.html',
-  styleUrls: ['./summoner-profile.component.css']
+  selector: 'app-summoner',
+  templateUrl: './summoner.component.html'
 })
-export class SummonerProfileComponent implements OnInit {
+export class SummonerComponent implements OnInit {
 
-  summonerProfile: SummonerProfile;
+  summoner: Summoner;
   region = 'na1';
   regions: object[] = [
     { id: 'na1', name: 'North America'},
@@ -30,10 +29,9 @@ export class SummonerProfileComponent implements OnInit {
   }
 
   onSearchClick(summonerName: string) {
-    this.leagueService.getSummonerProfile(summonerName, this.region)
+    this.leagueService.getSummonerStats(summonerName, this.region)
       .subscribe(response => {
-        this.summonerProfile = response.summonerProfile;
+        this.summoner = response;
       });
   }
-
 }

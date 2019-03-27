@@ -5,12 +5,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SummonerProfileComponent } from './summoner-profile/summoner-profile.component';
+import { SummonerComponent } from './summoner/summoner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SummonerProfileComponent
+    SummonerComponent
   ],
   imports: [
     BrowserModule,

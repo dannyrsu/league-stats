@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SummonerProfileComponent } from './summoner-profile.component';
+import { SummonerComponent } from './summoner.component';
 
 describe('SummonerProfileComponent', () => {
-  let component: SummonerProfileComponent;
-  let fixture: ComponentFixture<SummonerProfileComponent>;
+  let component: SummonerComponent;
+  let fixture: ComponentFixture<SummonerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SummonerProfileComponent ]
+      declarations: [ SummonerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SummonerProfileComponent);
+    fixture = TestBed.createComponent(SummonerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
