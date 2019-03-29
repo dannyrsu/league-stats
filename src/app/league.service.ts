@@ -9,7 +9,9 @@ import { Summoner } from './models/summoner';
 })
 export class LeagueService {
   private leagueApiUrl = 'http://localhost:8080'; // TODO: Make this configurable
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient) {
+  }
 
   /**
    * Handle Http operation that failed.
@@ -33,6 +35,13 @@ export class LeagueService {
       .pipe(
         tap(_ => console.log(`Call to League service to get ${summonerName} on ${region}`)),
         catchError(this.handleError<Summoner>('getSummonerStats', null))
+      );
+  }
+
+  getGameVersions(): Observable<any> {
+    return this.http.get('https://ddragon.leagueoflegends.com/realms/na.json')
+      .pipe(
+        catchError(this.handleError<any>('getGameVersions', null))
       );
   }
 }

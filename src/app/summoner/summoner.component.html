@@ -1,6 +1,6 @@
 <div>
   <div class="form-inline">
-      <input #summonerName class="form-control my-2 mr-2" placeholder="Summoner Name" />
+      <input #summonerName (keyup.enter)="onSearchClick(summonerName.value)" class="form-control my-2 mr-2" placeholder="Summoner Name" />
       <select class="form-control custom-select m-2" [(ngModel)]="region">
         <option *ngFor="let r of regions" [ngValue]="r.id">{{r.name}}</option>
       </select>
@@ -9,7 +9,7 @@
 
   <div *ngIf="summoner" class='card'>
     <div class="card-body">
-      <img width="100" src="https://ddragon.leagueoflegends.com/cdn/9.6.1/img/profileicon/{{summoner.summonerProfile.profileIconId}}.png" />
+      <img width="100" src="{{gameVersions.cdn}}/{{gameVersions.n.profileicon}}/img/profileicon/{{summoner.summonerProfile.profileIconId}}.png" />
       <div class="d-inline-block ml-2">
           <h4 class="card-title">{{summoner.summonerProfile.name}}</h4>
           <h6 class="card-subtitle mb-2 text-muted">Level {{summoner.summonerProfile.summonerLevel}}</h6>
@@ -20,7 +20,12 @@
 
         <div class="card" *ngFor="let match of summoner.matchHistory.matches">
           <div class="card-body">
-            <img width="50" src="http://ddragon.leagueoflegends.com/cdn/9.6.1/img/champion/Draven.png" />
+            <div>{{match.timestamp | date}}</div>
+            <div>Players</div>
+            <div *ngFor="let participant of match.game.participantIdentities">
+              <img width="50" src="{{gameVersions.cdn}}/{{gameVersions.n.profileicon}}/img/profileicon/{{participant.player.profileIcon}}.png" />
+              <div>{{participant.player.summonerName}}</div>
+            </div>
           </div>
         </div>
       </div>

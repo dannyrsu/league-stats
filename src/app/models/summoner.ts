@@ -23,6 +23,7 @@ class MatchHistory {
 
 class Match {
   lane: string;
+  game: any;
   gameId: string;
   champion: number;
   platformId: string;

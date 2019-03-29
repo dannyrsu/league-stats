@@ -9,6 +9,7 @@ import { Summoner } from '../models/summoner';
 export class SummonerComponent implements OnInit {
 
   summoner: Summoner;
+  gameVersions: object;
   region = 'na1';
   regions: object[] = [
     { id: 'na1', name: 'North America'},
@@ -26,6 +27,9 @@ export class SummonerComponent implements OnInit {
   constructor(private leagueService: LeagueService) { }
 
   ngOnInit() {
+    this.leagueService.getGameVersions().subscribe(data => {
+      this.gameVersions = data;
+    });
   }
 
   onSearchClick(summonerName: string) {
