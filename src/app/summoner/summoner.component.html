@@ -16,15 +16,19 @@
       </div>
       
       <div *ngIf="summoner.matchHistory && summoner.matchHistory.matches.length">
-        Match history
-
         <div class="card" *ngFor="let match of summoner.matchHistory.matches">
           <div class="card-body">
             <div>{{match.timestamp | date}}</div>
             <div>Players</div>
-            <div *ngFor="let participant of match.game.participantIdentities">
-              <img width="50" src="{{gameVersions.cdn}}/{{gameVersions.n.profileicon}}/img/profileicon/{{participant.player.profileIcon}}.png" />
-              <div>{{participant.player.summonerName}}</div>
+            <div class="">
+              <div class="card" *ngFor="let participant of match.game.participantIdentities">
+                <div class="card-body">
+                    <img width="50" src="{{gameVersions.cdn}}/{{gameVersions.n.profileicon}}/img/profileicon/{{participant.player.profileIcon}}.png" />
+                    <div class="d-inline-block ml-2">
+                        <h6 class="card-title">{{participant.player.summonerName}}</h6>
+                    </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
