@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, tap, map } from 'rxjs/operators';
 import { Summoner } from './models/summoner';
 
 @Injectable({
@@ -34,8 +34,29 @@ export class LeagueService {
     return this.http.get<Summoner>(`${this.leagueApiUrl}/v1/summoner/${summonerName}/stats?region=${region}`)
       .pipe(
         tap(_ => console.log(`Call to League service to get ${summonerName} on ${region}`)),
+        map(response => { // move to the server side for manipulation
+          const matches = response.matchHistory.matches;
+          for (const match of matches) {
+            for (const participantIdentity of match.game.participantIdentities) {
+              for (const participant of match.game.participants) {
+                if (participant.participantId === participantIdentity.participantId) {
+                  participant.player = participantIdentity.player;
+                }
+              }
+            }
+            delete match.game.participantIdentities;
+          }
+          return response;
+        }),
         catchError(this.handleError<Summoner>('getSummonerStats', null))
       );
+  }
+
+  getChampionData(championId: string): Observable<any> {
+    return this.http.get(`${this.leagueApiUrl}/v1/champion/${championId}`)
+    .pipe(
+      catchError(this.handleError<Summoner>('getChampionData', null))
+    );
   }
 
   getGameVersions(): Observable<any> {
@@ -43,5 +64,21 @@ export class LeagueService {
       .pipe(
         catchError(this.handleError<any>('getGameVersions', null))
       );
+  }
+
+  getLeagueRegions(): object[] {
+    return [
+      { id: 'na1', name: 'North America'},
+      { id: 'euw1', name: 'Europe West'},
+      { id: 'kr', name: 'Korea'},
+      { id: 'eun1', name: 'Europe Nordic & East'},
+      { id: 'ru', name: 'Russia'},
+      { id: 'jp1', name: 'Japan'},
+      { id: 'br1', name: 'Brazil'},
+      { id: 'oc1', name: 'Oceania'},
+      { id: 'tr1', name: 'Turkey'},
+      { id: 'la1', name: 'Latin America North'},
+      { id: 'la2', name: 'Latin America South'}
+    ];
   }
 }

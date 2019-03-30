@@ -4,29 +4,19 @@ import { Summoner } from '../models/summoner';
 
 @Component({
   selector: 'app-summoner',
-  templateUrl: './summoner.component.html'
+  templateUrl: './summoner.component.html',
+  styleUrls: ['./summoner.component.css']
 })
 export class SummonerComponent implements OnInit {
 
   summoner: Summoner;
   gameVersions: object;
   region = 'na1';
-  regions: object[] = [
-    { id: 'na1', name: 'North America'},
-    { id: 'euw1', name: 'Europe West'},
-    { id: 'kr', name: 'Korea'},
-    { id: 'eun1', name: 'Europe Nordic & East'},
-    { id: 'ru', name: 'Russia'},
-    { id: 'jp1', name: 'Japan'},
-    { id: 'br1', name: 'Brazil'},
-    { id: 'oc1', name: 'Oceania'},
-    { id: 'tr1', name: 'Turkey'},
-    { id: 'la1', name: 'Latin America North'},
-    { id: 'la2', name: 'Latin America South'}
-  ];
+  regions: object[];
   constructor(private leagueService: LeagueService) { }
 
   ngOnInit() {
+    this.regions = this.leagueService.getLeagueRegions();
     this.leagueService.getGameVersions().subscribe(data => {
       this.gameVersions = data;
     });
