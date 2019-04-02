@@ -34,20 +34,6 @@ export class LeagueService {
     return this.http.get<Summoner>(`${this.leagueApiUrl}/v1/summoner/${summonerName}/stats?region=${region}`)
       .pipe(
         tap(_ => console.log(`Call to League service to get ${summonerName} on ${region}`)),
-        map(response => { // move to the server side for manipulation
-          const matches = response.matchHistory.matches;
-          for (const match of matches) {
-            for (const participantIdentity of match.game.participantIdentities) {
-              for (const participant of match.game.participants) {
-                if (participant.participantId === participantIdentity.participantId) {
-                  participant.player = participantIdentity.player;
-                }
-              }
-            }
-            delete match.game.participantIdentities;
-          }
-          return response;
-        }),
         catchError(this.handleError<Summoner>('getSummonerStats', null))
       );
   }

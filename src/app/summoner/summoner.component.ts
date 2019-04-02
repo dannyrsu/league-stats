@@ -25,7 +25,7 @@ export class SummonerComponent implements OnInit {
   onSearchClick(summonerName: string) {
     this.leagueService.getSummonerStats(summonerName, this.region)
       .subscribe(response => {
-        this.summoner = response;
+        this.summoner = response.summonerProfile;
       });
   }
 }

@@ -9,16 +9,16 @@
 
   <div *ngIf="summoner" class='card'>
     <div class="card-body">
-      <img width="100" src="{{gameVersions.cdn}}/{{gameVersions.n.profileicon}}/img/profileicon/{{summoner.summonerProfile.profileIconId}}.png" />
+      <img width="100" src="{{gameVersions.cdn}}/{{gameVersions.n.profileicon}}/img/profileicon/{{summoner.profileIconId}}.png" />
       <div class="d-inline-block ml-2">
-          <h4 class="card-title">{{summoner.summonerProfile.name}}</h4>
-          <h6 class="card-subtitle mb-2 text-muted">Level {{summoner.summonerProfile.summonerLevel}}</h6>
+          <h4 class="card-title">{{summoner.name}}</h4>
+          <h6 class="card-subtitle mb-2 text-muted">Level {{summoner.summonerLevel}}</h6>
       </div>
       
-      <div *ngIf="summoner.matchHistory && summoner.matchHistory.matches.length">
-        <div class="card" *ngFor="let match of summoner.matchHistory.matches">
+      <div *ngIf="summoner.matchHistory && summoner.matchHistory.length">
+        <div class="card" *ngFor="let match of summoner.matchHistory">
           <div class="card-body">
-            <div>{{match.timestamp | date}}</div>
+            <div>{{match.gameCreation | date}}</div>
           </div>
         </div>
       </div>
