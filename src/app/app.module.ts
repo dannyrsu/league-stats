@@ -6,11 +6,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SummonerComponent } from './summoner/summoner.component';
+import { SecondsMinutesPipe } from './seconds-minutes.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SummonerComponent
+    SummonerComponent,
+    SecondsMinutesPipe
   ],
   imports: [
     BrowserModule,

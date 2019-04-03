@@ -18,8 +18,9 @@
       <div *ngIf="summoner.matchHistory && summoner.matchHistory.length">
         <div class="card" *ngFor="let match of summoner.matchHistory">
           <div class="card-body">
-            <div>{{match.win ? "Win" : "Loss"}}</div>
+            <div>{{match.stats.win ? "Win" : "Loss"}}</div>
             <div>{{match.gameCreation | date}}</div>
+            <div>{{match.gameDuration | secondsMinutes}}</div>
             <!-- Champion (need to use game version not latest) -->
             <img *ngIf="match.champion" class="rounded-circle" title="{{match.champion.blurb}}" width="50" src="{{gameVersions.cdn}}/{{gameVersions.n.champion}}/img/champion/{{match.champion.id}}.png" />
             <span class="badge badge-pill">{{match.stats.champLevel}}</span>
