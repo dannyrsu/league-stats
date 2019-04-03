@@ -3,15 +3,15 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { SummonerComponent } from './summoner.component';
-import { SecondsMinutesPipe } from '../shared/seconds-minutes.pipe';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
   declarations: [
-    SecondsMinutesPipe,
     SummonerComponent
   ],
   exports: [
