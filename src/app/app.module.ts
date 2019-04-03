@@ -1,24 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SummonerComponent } from './summoner/summoner.component';
-import { SecondsMinutesPipe } from './seconds-minutes.pipe';
+import { SummonerModule } from './summoner/summoner.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SummonerComponent,
-    SecondsMinutesPipe
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    SummonerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
-import { Summoner } from './models/summoner';
+import { Summoner } from '../summoner/summoner.model';
 
 @Injectable({
   providedIn: 'root'

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LeagueService } from '../league.service';
-import { SummonerProfile } from '../models/summoner';
+import { LeagueService } from '../shared/league.service';
+import { SummonerProfile } from './summoner.model';
 
 @Component({
   selector: 'app-summoner',
