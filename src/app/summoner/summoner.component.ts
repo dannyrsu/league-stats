@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LeagueService } from '../league.service';
-import { Summoner } from '../models/summoner';
+import { SummonerProfile } from '../models/summoner';
 
 @Component({
   selector: 'app-summoner',
@@ -9,10 +9,10 @@ import { Summoner } from '../models/summoner';
 })
 export class SummonerComponent implements OnInit {
 
-  summoner: Summoner;
-  gameVersions: object;
+  summoner: SummonerProfile;
+  gameVersions: any;
   region = 'na1';
-  regions: object[];
+  regions: any[];
   constructor(private leagueService: LeagueService) { }
 
   ngOnInit() {

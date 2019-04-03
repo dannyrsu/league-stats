@@ -2,7 +2,7 @@ export class Summoner {
   summonerProfile: SummonerProfile;
 }
 
-class SummonerProfile {
+export class SummonerProfile {
   profileIconId: number;
   name: string;
   puuid: string;
@@ -10,5 +10,5 @@ class SummonerProfile {
   revisionDate: number;
   id: string;
   accountId: string;
-  matchHistory: object;
+  matchHistory: any[];
 }
