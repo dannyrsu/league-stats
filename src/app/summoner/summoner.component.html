@@ -23,8 +23,8 @@
               <div>{{match.gameCreation | date}} {{match.gameDuration | secondsMinutes}}</div>
               <img *ngIf="match.champion" class="rounded-circle" title="{{match.champion.blurb}}" width="50" src="{{gameVersions.cdn}}/{{gameVersions.n.champion}}/img/champion/{{match.champion.id}}.png" />
               <span class="badge badge-pill">{{match.stats.champLevel}}</span>
-              <img width="30" src="{{gameVersions.cdn}}/{{gameVersions.n.summoner}}/img/spell/{{match.spell1.image.full}}" />
-              <img width="30" src="{{gameVersions.cdn}}/{{gameVersions.n.summoner}}/img/spell/{{match.spell2.image.full}}" />
+              <img width="30" title="{{match.spell1.description}}" src="{{gameVersions.cdn}}/{{gameVersions.n.summoner}}/img/spell/{{match.spell1.image.full}}" />
+              <img width="30" title="{{match.spell2.description}}" src="{{gameVersions.cdn}}/{{gameVersions.n.summoner}}/img/spell/{{match.spell2.image.full}}" />
             </div>
             <div>
               <div>KDA {{match.stats.kills}}/{{match.stats.deaths}}/{{match.stats.assists}}</div>
