@@ -17,9 +17,10 @@
     <div *ngIf="summoner.matchHistory && summoner.matchHistory.length">
       <div class="card bg-light" *ngFor="let match of summoner.matchHistory">
         <div class="card-body">
-          <div class="d-flex justify-content-between">
+          <div class="d-flex justify-content-between align-items-center">
             <!-- Champion (need to use game version not latest) -->
             <div>
+              <div [ngClass]="{'text-success': match.stats.win, 'text-danger': !match.stats.win}">{{match.stats.win ? "Victory" : "Defeat"}}</div>
               <div>{{match.gameCreation | date}} {{match.gameDuration | secondsMinutes}}</div>
               <img *ngIf="match.champion" class="rounded-circle" title="{{match.champion.blurb}}" width="50" src="{{gameVersions.cdn}}/{{gameVersions.n.champion}}/img/champion/{{match.champion.id}}.png" />
               <span class="badge badge-pill">{{match.stats.champLevel}}</span>
@@ -27,7 +28,8 @@
               <img width="30" title="{{match.spell2.description}}" src="{{gameVersions.cdn}}/{{gameVersions.n.summoner}}/img/spell/{{match.spell2.image.full}}" />
             </div>
             <div>
-              <div>KDA {{match.stats.kills}}/{{match.stats.deaths}}/{{match.stats.assists}}</div>
+              <div>{{match.stats.kills}}/{{match.stats.deaths}}/{{match.stats.assists}}</div>
+              <div>KDA {{ ((match.stats.kills + match.stats.assists) / match.stats.deaths) | number: '1.0-2' }}</div>
               <div>{{match.stats.totalMinionsKilled}} CS</div>
             </div>
             <div>
