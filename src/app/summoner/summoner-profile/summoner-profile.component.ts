@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { LeagueService } from '../shared/league.service';
-import { SummonerProfile } from './summoner.model';
+import { LeagueService } from '../../shared/league.service';
+import { SummonerProfile } from '../summoner.model';
 
 @Component({
-  selector: 'app-summoner',
-  templateUrl: './summoner.component.html',
-  styleUrls: ['./summoner.component.css']
+  selector: 'app-summoner-profile',
+  templateUrl: './summoner-profile.component.html',
+  styleUrls: ['./summoner-profile.component.css']
 })
-export class SummonerComponent implements OnInit {
+export class SummonerProfileComponent implements OnInit {
 
   summoner: SummonerProfile;
   gameVersions: any;

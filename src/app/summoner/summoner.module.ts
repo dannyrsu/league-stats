@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { SummonerComponent } from './summoner.component';
+import { SummonerProfileComponent } from './summoner-profile/summoner-profile.component';
+import { SummonerMatchComponent } from './summoner-match/summoner-match.component';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
@@ -12,10 +13,12 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule
   ],
   declarations: [
-    SummonerComponent
+    SummonerProfileComponent,
+    SummonerMatchComponent
   ],
   exports: [
-    SummonerComponent
+    SummonerProfileComponent,
+    SummonerMatchComponent
   ]
 })
 
