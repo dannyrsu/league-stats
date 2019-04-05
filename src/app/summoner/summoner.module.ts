@@ -5,10 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { SummonerProfileComponent } from './summoner-profile/summoner-profile.component';
 import { SummonerMatchComponent } from './summoner-match/summoner-match.component';
 import { SharedModule } from '../shared/shared.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
+    RouterModule,
     FormsModule,
     SharedModule
   ],

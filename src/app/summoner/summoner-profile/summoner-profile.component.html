@@ -14,8 +14,8 @@
         <h6 class="card-subtitle mb-2 text-muted">Level {{summoner.summonerLevel}}</h6>
     </div>
     
-    <div class="mt-3" *ngIf="summoner.matchHistory && summoner.matchHistory.length">
-      <div class="card bg-light" *ngFor="let match of summoner.matchHistory">
+    <div class="mt-2" *ngIf="summoner.matchHistory && summoner.matchHistory.length">
+      <div class="card bg-light" *ngFor="let match of summoner.matchHistory" [routerLink]="['/match', match.gameId]">
         <div class="card-body">
           <div class="">
             <!-- Champion (need to use game version not latest) -->
@@ -38,7 +38,7 @@
                   <img width="30" src="{{gameVersions.cdn}}/{{gameVersions.n.item}}/img/item/{{match.stats.item4}}.png" />
                   <img width="30" src="{{gameVersions.cdn}}/{{gameVersions.n.item}}/img/item/{{match.stats.item5}}.png" />
                   <img width="30" src="{{gameVersions.cdn}}/{{gameVersions.n.item}}/img/item/{{match.stats.item6}}.png" />
-                </div>
+              </div>
               <div class="d-inline-block mr-2">{{match.stats.kills}}/{{match.stats.deaths}}/{{match.stats.assists}}</div>
               <div class="d-inline-block mr-2">KDA {{ ((match.stats.kills + match.stats.assists) / match.stats.deaths) | number: '1.0-2' }}</div>
               <div class="d-inline-block mr-2">{{match.stats.totalMinionsKilled}} CS</div>
