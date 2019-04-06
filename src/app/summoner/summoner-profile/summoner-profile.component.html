@@ -15,7 +15,7 @@
     </div>
     
     <div class="mt-2" *ngIf="summoner.matchHistory && summoner.matchHistory.length">
-      <div class="card bg-light" *ngFor="let match of summoner.matchHistory" [routerLink]="['/match', match.gameId]">
+      <div class="card bg-light" *ngFor="let match of summoner.matchHistory" [routerLink]="['/match', match.gameId]" [queryParams]="{region: region}">
         <div class="card-body">
           <div class="">
             <!-- Champion (need to use game version not latest) -->

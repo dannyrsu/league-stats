@@ -1,3 +1,9 @@
-<p>
-  summoner-match works!
-</p>
+<div>
+  <h4>Match Details</h4>
+
+  <div *ngIf="match">
+    <div>{{match.gameId}}</div>
+  </div>
+
+  <button type="button" class="btn btn-primary" (click)="goBack()">Back</button>
+</div>

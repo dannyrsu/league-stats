@@ -46,6 +46,13 @@ export class LeagueService {
       );
   }
 
+  getMatch(matchId: number, region: string): Observable<any> {
+    return this.http.get(`${this.leagueApiUrl}/v1/match/${matchId}?region=${region}`)
+      .pipe(
+        catchError(this.handleError<any>('getMatch', null))
+      );
+  }
+
   getChampionData(championId: string): Observable<any> {
     return this.http.get(`${this.leagueApiUrl}/v1/champion/${championId}`)
     .pipe(
