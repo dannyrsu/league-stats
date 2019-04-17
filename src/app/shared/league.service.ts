@@ -34,14 +34,6 @@ export class LeagueService {
     return this.http.get<Summoner>(`${this.leagueApiUrl}/v1/summoner/${summonerName}/stats?region=${region}`)
       .pipe(
         tap(_ => console.log(`Call to League service to get ${summonerName} on ${region}`)),
-        map(response => {
-          for (const match of response.summonerProfile.matchHistory) {
-            this.getChampionData(match.championId).subscribe(champion => {
-              match.champion = champion;
-            });
-          }
-          return response;
-        }),
         catchError(this.handleError<Summoner>('getSummonerStats', null))
       );
   }
@@ -51,13 +43,6 @@ export class LeagueService {
       .pipe(
         catchError(this.handleError<any>('getMatch', null))
       );
-  }
-
-  getChampionData(championId: string): Observable<any> {
-    return this.http.get(`${this.leagueApiUrl}/v1/champion/${championId}`)
-    .pipe(
-      catchError(this.handleError<any>('getChampionData', null))
-    );
   }
 
   getGameVersions(): Observable<any> {

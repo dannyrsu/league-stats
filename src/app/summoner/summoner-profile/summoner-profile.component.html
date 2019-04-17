@@ -14,39 +14,40 @@
         <h6 class="card-subtitle mb-2 text-muted">Level {{summoner.summonerLevel}}</h6>
     </div>
     
-    <div class="mt-2" *ngIf="summoner.matchHistory && summoner.matchHistory.length">
-      <div class="card bg-light" *ngFor="let match of summoner.matchHistory" [routerLink]="['/match', match.gameId]" [queryParams]="{region: region}">
+    <div class="mt-2" *ngIf="summoner.matchHistory && summoner.matchHistory.matches && summoner.matchHistory.matches.length">
+      <div class="card bg-light" *ngFor="let match of summoner.matchHistory.matches" [routerLink]="['/match', match.gameId]" [queryParams]="{region: region}">
         <div class="card-body">
           <div class="">
             <!-- Champion (need to use game version not latest) -->
             <div class="d-inline-block align-text-bottom">
-              <img *ngIf="match.champion" class="rounded-circle" title="{{match.champion.blurb}}" width="50" src="{{gameVersions.cdn}}/{{gameVersions.n.champion}}/img/champion/{{match.champion.id}}.png" />
-              <span class="badge badge-pill">{{match.stats.champLevel}}</span>
+              <img *ngIf="match.champion" class="rounded-circle" title="{{match.player.championBlurb}}" width="50" 
+                src="{{gameVersions.cdn}}/{{gameVersions.n.champion}}/img/champion/{{match.player.championImage}}" />
+              <span class="badge badge-pill">{{match.player.stats.champLevel}}</span>
             </div>
             <div class="d-inline-block mr-5">
-              <div class="font-weight-bold" [ngClass]="{'text-primary': match.stats.win, 'text-danger': !match.stats.win}">{{match.stats.win ? "Victory" : "Defeat"}}</div>
+              <div class="font-weight-bold" [ngClass]="{'text-primary': match.player.stats.win, 'text-danger': !match.player.stats.win}">{{match.player.stats.win ? "Victory" : "Defeat"}}</div>
               <div>Game Type</div>
-              <img width="30" title="{{match.spell1.description}}" src="{{gameVersions.cdn}}/{{gameVersions.n.summoner}}/img/spell/{{match.spell1.image.full}}" />
-              <img width="30" title="{{match.spell2.description}}" src="{{gameVersions.cdn}}/{{gameVersions.n.summoner}}/img/spell/{{match.spell2.image.full}}" />
+              <img width="30" title="{{match.player.spell1Desc}}" src="{{gameVersions.cdn}}/{{gameVersions.n.summoner}}/img/spell/{{match.player.spell1Name}}.png" />
+              <img width="30" title="{{match.player.spell2Desc}}" src="{{gameVersions.cdn}}/{{gameVersions.n.summoner}}/img/spell/{{match.player.spell2Name}}.png" />
             </div>
             <div class="d-inline-block align-bottom mr-5">
               <div>
-                  <img width="30" src="{{gameVersions.cdn}}/{{gameVersions.n.item}}/img/item/{{match.stats.item0}}.png" /> 
-                  <img width="30" src="{{gameVersions.cdn}}/{{gameVersions.n.item}}/img/item/{{match.stats.item1}}.png" />
-                  <img width="30" src="{{gameVersions.cdn}}/{{gameVersions.n.item}}/img/item/{{match.stats.item2}}.png" />
-                  <img width="30" src="{{gameVersions.cdn}}/{{gameVersions.n.item}}/img/item/{{match.stats.item3}}.png" />
-                  <img width="30" src="{{gameVersions.cdn}}/{{gameVersions.n.item}}/img/item/{{match.stats.item4}}.png" />
-                  <img width="30" src="{{gameVersions.cdn}}/{{gameVersions.n.item}}/img/item/{{match.stats.item5}}.png" />
-                  <img width="30" src="{{gameVersions.cdn}}/{{gameVersions.n.item}}/img/item/{{match.stats.item6}}.png" />
+                  <img width="30" src="{{gameVersions.cdn}}/{{gameVersions.n.item}}/img/item/{{match.player.stats.item0}}.png" /> 
+                  <img width="30" src="{{gameVersions.cdn}}/{{gameVersions.n.item}}/img/item/{{match.player.stats.item1}}.png" />
+                  <img width="30" src="{{gameVersions.cdn}}/{{gameVersions.n.item}}/img/item/{{match.player.stats.item2}}.png" />
+                  <img width="30" src="{{gameVersions.cdn}}/{{gameVersions.n.item}}/img/item/{{match.player.stats.item3}}.png" />
+                  <img width="30" src="{{gameVersions.cdn}}/{{gameVersions.n.item}}/img/item/{{match.player.stats.item4}}.png" />
+                  <img width="30" src="{{gameVersions.cdn}}/{{gameVersions.n.item}}/img/item/{{match.player.stats.item5}}.png" />
+                  <img width="30" src="{{gameVersions.cdn}}/{{gameVersions.n.item}}/img/item/{{match.player.stats.item6}}.png" />
               </div>
-              <div class="d-inline-block mr-2">{{match.stats.kills}}/{{match.stats.deaths}}/{{match.stats.assists}}</div>
-              <div class="d-inline-block mr-2">KDA {{ ((match.stats.kills + match.stats.assists) / match.stats.deaths) | number: '1.0-2' }}</div>
-              <div class="d-inline-block mr-2">{{match.stats.totalMinionsKilled}} CS</div>
+              <div class="d-inline-block mr-2">{{match.player.stats.kills}}/{{match.player.stats.deaths}}/{{match.player.stats.assists}}</div>
+              <div class="d-inline-block mr-2">KDA {{ ((match.player.stats.kills + match.player.stats.assists) / match.player.stats.deaths) | number: '1.0-2' }}</div>
+              <div class="d-inline-block mr-2">{{match.player.stats.totalMinionsKilled}} CS</div>
             </div>
             <div class="d-inline-block align-text-bottom">
               <div>Map Name</div>
               <div class="d-inline-block mr-2">{{match.gameDuration | secondsMinutes}}</div>
-              <div class="d-inline-block mr-2">{{match.gameCreation | date}}</div>
+              <div class="d-inline-block mr-2">{{match.timestamp | date}}</div>
             </div>
           </div>
         </div>

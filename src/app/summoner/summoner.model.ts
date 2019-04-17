@@ -10,5 +10,5 @@ export class SummonerProfile {
   revisionDate: number;
   id: string;
   accountId: string;
-  matchHistory: any[];
+  matchHistory: object;
 }
